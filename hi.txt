@@ -1,0 +1,60 @@
+FROM python:3.10-slim
+WORKDIR /app
+COPY . .
+RUN pip install -r requirements.txt
+CMD ["python", "app.py"]
+
+Docker Compose Cheat Sheet (Minimal + Usage)
+
+docker compose up
+  → Build (if needed) and start all services.
+
+docker compose up -d
+  → Start services in detached/background mode.
+
+docker compose up --build
+  → Rebuild images before starting containers.
+
+docker compose down
+  → Stop and remove containers, networks.
+
+docker compose down -v
+  → Stop containers AND remove volumes (fresh DB reset).
+
+docker compose ps
+  → List running containers in this compose project.
+
+docker compose logs
+  → Show logs of all services.
+
+docker compose logs -f
+  → Stream logs live (like tail -f).
+
+docker compose build
+  → Build all images defined in docker-compose.yml.
+
+docker compose start
+  → Start already-created containers without recreating them.
+
+docker compose stop
+  → Stop services without deleting them.
+
+docker compose restart
+  → Restart all services.
+
+docker compose exec <service> sh
+  → Open an interactive shell inside a running container.
+    Example: docker compose exec flask sh
+
+docker compose run <service> <command>
+  → Run a one-off command in a new container.
+    Example: docker compose run mysql mysql -u root -p
+
+docker compose config
+  → Validate and view the final resolved compose config.
+
+Quick Fix Combo (use when things break):
+docker compose down -v
+docker compose up --build
+
+  
