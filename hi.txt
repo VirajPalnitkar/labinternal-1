@@ -57,4 +57,23 @@ Quick Fix Combo (use when things break):
 docker compose down -v
 docker compose up --build
 
+
+# 1. Start Minikube
+minikube start
+
+# 2. Create Nginx deployment
+kubectl create deployment nginx --image=nginx
+
+# 3. Expose Nginx service
+kubectl expose deployment nginx --type=NodePort --port=80
+
+# 4. Open Nginx in browser
+minikube service nginx
+
+kubectl get pods
+kubectl get services
+
+kubectl delete service nginx
+kubectl delete deployment nginx
+minikube stop
   
